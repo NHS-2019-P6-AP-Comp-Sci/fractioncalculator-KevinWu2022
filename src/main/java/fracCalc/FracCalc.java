@@ -1,15 +1,16 @@
 /**
  * @author Mr. Rasmussen
  */
-
 package fracCalc;
-
+import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args)
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
-
+    	Scanner s = new Scanner(System.in);
+    	String input = s.nextLine();
+    	System.out.println(produceAnswer(input));
     }
 
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -23,8 +24,11 @@ public class FracCalc {
     public static String produceAnswer(String input)
     {
         // TODO: Implement this function to produce the solution to the input
-
-        return "";
+    	int space = input.indexOf(" ");
+    	String firstOperand = input.substring(0, space);
+    	String operator = input.substring(space + 1, space + 2);
+    	String secondOperand = input.substring(space + 3);
+        return secondOperand;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
