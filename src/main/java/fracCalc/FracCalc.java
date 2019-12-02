@@ -76,7 +76,34 @@ public class FracCalc {
     		secondDenominator = secondOperand.substring(secondSlash + 1);
     		secondWhole = "0";
     	}
-        return "whole:" + secondWhole + " numerator:" + secondNumerator + " denominator:" + secondDenominator;
+    	int fWhole = Integer.parseInt(firstWhole);
+    	int fNumerator = Integer.parseInt(firstNumerator);
+    	if (fWhole < 0) {
+    		fNumerator = fNumerator * -1;
+    	}
+    	int fDenominator = Integer.parseInt(firstDenominator);
+    	int sWhole = Integer.parseInt(secondWhole);
+    	int sNumerator = Integer.parseInt(secondNumerator);
+    	if (sWhole < 0) {
+    		sNumerator = sNumerator * -1;
+    	}
+    	int sDenominator = Integer.parseInt(secondDenominator);
+    	int fImNum = fWhole * fDenominator + fNumerator;
+    	int sImNum = sWhole * sDenominator + sNumerator;
+    	String result = "";
+    	if (operator.equals("+")) {
+    		result = (fImNum * sDenominator + sImNum * fDenominator) + "/" + (fDenominator * sDenominator);
+    	}
+    	else if (operator.equals("-")) {
+    		result = (fImNum * sDenominator - sImNum * fDenominator) + "/" + (fDenominator * sDenominator);
+    	}
+    	else if (operator.equals("*")) {
+    		result = (fImNum * sImNum) + "/" + (fDenominator * sDenominator);
+    	}
+    	else if (operator.equals("/")) {
+    		result = (fImNum * sDenominator) + "/" + (fDenominator * sImNum);
+    	}
+        return result;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
